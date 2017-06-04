@@ -15,7 +15,7 @@
 
 import sys, os, argparse
 import requests
-import json
+import simplejson
 
 __version__ = '2.1'
 
@@ -101,7 +101,7 @@ def main(passedArgs = None):
 	if not d:
 		print 'ERROR: No firmwares found! Invalid device.'
 		return 1
-	for device in json.loads(d).itervalues():
+	for device in simplejson.loads(d).itervalues():
 		board = device['board']
 		model = device['model']
 		cpid = device['cpid']
@@ -133,7 +133,7 @@ def main(passedArgs = None):
 		if not g:
 			print 'ERROR: No firmwares found! Invalid device.'
 			return 1
-		for device in json.loads(g).itervalues():
+		for device in simplejson.loads(g).itervalues():
 			board = device['board']
 			model = device['model']
 			cpid = device['cpid']
@@ -160,7 +160,7 @@ def main(passedArgs = None):
 		if not h:
 			print 'ERROR: No firmwares found! Invalid device.'
 			return 1
-		for device in json.loads(h).itervalues():
+		for device in simplejson.loads(h).itervalues():
 			board = device['board']
 			model = device['model']
 			cpid = device['cpid']
