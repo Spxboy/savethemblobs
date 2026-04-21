@@ -1,142 +1,147 @@
-# Ethical Game Reverse Engineering Roadmap (Beginner-Friendly)
+# Roblox-Focused Learning Roadmap (Ethical + Beginner-Friendly)
 
-This roadmap is for learners who want to understand how game manipulation techniques work **without cheating in live games**.
+This roadmap is tailored for learning how Roblox systems work in a way that is ethical, practical, and beginner-friendly.
 
-## Safety + ethics first
+## What this roadmap is for
 
-Use this only for:
-- Your own toy projects
-- Open-source games
-- Offline, single-player lab environments
-- Learning and security research where permitted
+Use this for:
+- Building your own Roblox experiences in **Roblox Studio**
+- Learning how game systems are structured (client/server, remotes, data flow)
+- Debugging and improving your own code
+- Security-minded learning (defensive design, exploit mitigation)
 
-Avoid:
-- Multiplayer cheating
-- Bypassing anti-cheat in commercial games
-- Anything against Terms of Service or local law
+Do **not** use this for:
+- Exploiting other creators' games
+- Bypassing Roblox safety systems
+- Writing cheats, injectors, or unauthorized scripts
 
-## The language stack (in practical order)
+## Best first language for your goal: Luau
 
-If your target is eventually low-level tooling, this order works well:
+For Roblox, the right first language is **Luau** (Roblox's Lua dialect).
 
-1. **Lua** (2–4 weeks): easy scripting and quick feedback
-2. **Python** (3–6 weeks): automation, tooling, binary parsing, scripting helpers
-3. **C++** (long-term): memory layouts, pointers, processes, and reverse engineering fundamentals
+Why Luau first:
+1. It is the native Roblox scripting language
+2. You can build real projects quickly in Studio
+3. It supports gradual typing, which helps with structure and fewer bugs
+4. It gives fast feedback (edit script -> run playtest -> observe)
 
-> If your "number 3" means C++, that's a good long-term choice. Start there only after some scripting wins so you don't burn out.
+## Personalized study format (autistic-friendly + intuitive)
 
-## Personalized study design (autistic-friendly structure)
+Use the same daily structure every session:
 
-Use a predictable loop every day:
+- **15 min**: review yesterday's notes/checklist
+- **25 min**: one new Luau/Roblox concept
+- **30 min**: one tiny feature in Studio
+- **10 min**: write "what changed" + "what broke"
+- **5 min**: set tomorrow's first step before stopping
 
-- **20 min**: new concept
-- **25 min**: tiny hands-on task
-- **10 min**: write a one-page "what changed" note
-- **5 min**: stop and queue tomorrow's first step
+Low-overload rules:
+- Keep one project open for a full week (avoid context switching)
+- Change only one system at a time (UI, inventory, movement, etc.)
+- Keep a "known-good" place file before experiments
+- Use checklists instead of memory for setup, testing, and publishing
+- Timebox rabbit holes (15 minutes), then log and move on
 
-Rules that reduce overload:
+## 8-week Roblox roadmap
 
-- Keep one editor theme and one debugger setup for at least 30 days
-- Change only one variable at a time when testing
-- Use checklists, not memory, for lab setup
-- Keep a "known-good" baseline project and branch before experiments
-- Timebox rabbit holes: 15 minutes, then log and return
+### Weeks 1-2: Luau + Studio foundations
 
-## 8-week intuitive roadmap
-
-### Weeks 1-2: Foundations without game internals
-
-- Lua basics: variables, loops, tables, functions
-- Python basics for scripting and file parsing
-- C++ essentials: variables, structs, pointers, references
-- Learn hex/decimal conversions and little-endian basics
-
-Mini-project:
-- Build a tiny "player stats" simulator and load/save values from disk.
-
-### Weeks 3-4: Process + memory basics (safe lab)
-
-Use a toy target app you build yourself.
-
-- Understand virtual memory at a high level
-- Learn pointer chains and offsets
-- Read and write your own process memory in a controlled demo
-- Observe how values move after restart
+Learn:
+- Variables, tables, loops, functions
+- ModuleScripts and reusable functions
+- Basic typing (`: number`, `: string`, etc.)
+- Studio hierarchy: Workspace, ReplicatedStorage, ServerScriptService, StarterPlayer
 
 Mini-project:
-- "Trainer" for your own demo app (health, ammo, speed), offline only.
+- Build a simple coin pickup system that updates a score label.
 
-### Weeks 5-6: Reverse engineering workflow
+### Weeks 3-4: Client/server mental model
 
-- Static analysis basics: symbols, strings, call graphs
-- Dynamic analysis basics: breakpoints, watchpoints, stepping
-- Map a UI action to code paths in your toy app
-- Document each finding in a repeatable template
-
-Mini-project:
-- Produce a small reverse-engineering report for your demo game:
-  - target version
-  - addresses/offsets found
-  - method used
-  - reliability notes
-
-### Weeks 7-8: Hardening understanding
-
-- Learn why updates break offsets
-- Build pattern-signature scanning in your tooling
-- Add safety checks (version guardrails, null checks)
-- Practice rollback when assumptions fail
+Learn:
+- Difference between LocalScripts and Scripts
+- RemoteEvents and RemoteFunctions
+- Authority model: server validates game-critical actions
+- Basic anti-abuse validation (range checks, cooldowns)
 
 Mini-project:
-- Version-resilient trainer for your own toy binary with clear failsafes.
+- Shop system where purchases are requested by client but validated on server.
 
-## Tooling progression (conceptual)
+### Weeks 5-6: Game systems + data integrity
 
-Start simple and layer up:
+Learn:
+- DataStore patterns (save/load safely)
+- Retry and fallback patterns
+- Inventory/state modeling with ModuleScripts
+- Structured logging for bug tracking
 
-1. Compiler + debugger
-2. Hex viewer / binary inspector
-3. Static analysis tool
-4. Dynamic instrumentation framework
+Mini-project:
+- Persistent inventory with safe save/load and error handling.
 
-Don't install everything at once. Add one tool per week.
+### Weeks 7-8: Defensive engineering + polish
 
-## Learning artifacts to maintain
+Learn:
+- Threat modeling for common Roblox exploit attempts
+- Server-side sanity checks for movement, currency, damage
+- Monitoring suspicious behavior with logs and counters
+- Refactoring for readability and maintainability
 
-Maintain these files in a personal lab repo:
+Mini-project:
+- Add a "security hardening pass" to your game and document what changed.
 
+## Roblox tool progression (simple and focused)
+
+Install/use only what you need:
+1. Roblox Studio built-in debugger + output window
+2. Script Analysis and type checker warnings
+3. Version control workflow for place/scripts
+4. Profiling/performance tools after core gameplay works
+
+Avoid tool overload early. One new tool per week is enough.
+
+## Integration plan (education -> real project)
+
+Use this sequence to integrate learning into a real game:
+
+1. Build one mechanic in isolation (prototype place)
+2. Write a short test checklist for that mechanic
+3. Move it into your main game only after passing checklist
+4. Add server validation before release
+5. Ship small updates weekly instead of large rewrites
+
+## Personal repo notes to keep
+
+In your own notes repo, keep:
 - `notes/concepts.md` (plain-language explanations)
-- `notes/mistakes.md` (what broke, why, fix)
-- `labs/checklist.md` (startup and shutdown checklist)
-- `reports/<date>-finding.md` (structured findings)
+- `notes/errors.md` (error -> cause -> fix)
+- `checklists/playtest.md` (repeatable test flow)
+- `security/threat-model.md` (possible abuse paths + mitigations)
+- `changelog/<date>.md` (what changed each session)
 
-This turns confusion into reusable knowledge.
+This makes progress visible and reduces mental load.
 
-## Burnout prevention protocol
+## Burnout protocol (when blocked)
 
-If stuck for >30 minutes:
+If blocked for >30 minutes:
 
-1. Reproduce from clean baseline
-2. Shrink to smallest failing case
-3. State one falsifiable hypothesis
-4. Run one test
-5. Log result before trying next idea
+1. Return to your known-good baseline
+2. Reproduce with the smallest possible script
+3. Write one hypothesis
+4. Run one test only
+5. Log the result before trying another hypothesis
 
 ## What success looks like after 60 days
 
 You should be able to:
+- Build and ship a small Roblox game loop end-to-end
+- Explain client/server boundaries clearly
+- Implement server-side validation for key systems
+- Debug faster using repeatable notes/checklists
+- Improve your game without relying on unsafe shortcuts
 
-- Explain pointer + offset logic clearly
-- Reverse engineer your own toy binary end-to-end
-- Build a basic, guarded trainer for your own lab target
-- Explain legal/ethical boundaries confidently
+## Optional next specialization (pick one for 90 days)
 
-## Next step after this roadmap
+- **Gameplay Systems**: combat, progression, economy
+- **Technical Design**: architecture, modules, maintainability
+- **Defensive Engineering**: exploit-resistant server logic and monitoring
 
-Choose one specialization:
-
-- **Game modding** (official APIs, scripting)
-- **Engine internals** (C++ deep dive)
-- **Security research** (defensive RE and anti-tamper understanding)
-
-Pick one lane for 90 days before switching.
+Pick one lane and stay with it long enough to feel compounding progress.
