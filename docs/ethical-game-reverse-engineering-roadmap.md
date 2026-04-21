@@ -1,147 +1,131 @@
-# Roblox-Focused Learning Roadmap (Ethical + Beginner-Friendly)
+# Roblox Learning Speedrun (Ethical + Build-Fast)
 
-This roadmap is tailored for learning how Roblox systems work in a way that is ethical, practical, and beginner-friendly.
+This is a fast, practical roadmap for learning Roblox scripting and game-system integration quickly, without crossing ethical or platform boundaries.
 
-## What this roadmap is for
+## Rules of engagement (non-negotiable)
 
-Use this for:
-- Building your own Roblox experiences in **Roblox Studio**
-- Learning how game systems are structured (client/server, remotes, data flow)
-- Debugging and improving your own code
-- Security-minded learning (defensive design, exploit mitigation)
+Use this only for:
+- Your own Roblox projects
+- Learning, prototyping, and defensive engineering
+- Improving reliability/security of systems you build
 
 Do **not** use this for:
-- Exploiting other creators' games
-- Bypassing Roblox safety systems
-- Writing cheats, injectors, or unauthorized scripts
+- Exploiting other people's games
+- Creating cheats/injectors/unauthorized scripts
+- Bypassing Roblox safety systems or Terms of Use
 
-## Best first language for your goal: Luau
+## Fastest first language choice: Luau
 
-For Roblox, the right first language is **Luau** (Roblox's Lua dialect).
+If your goal is Roblox, learn **Luau** first and stay in Roblox Studio.
 
-Why Luau first:
-1. It is the native Roblox scripting language
-2. You can build real projects quickly in Studio
-3. It supports gradual typing, which helps with structure and fewer bugs
-4. It gives fast feedback (edit script -> run playtest -> observe)
+Why this is fastest:
+1. Native Roblox language
+2. Immediate feedback in playtests
+3. Direct path from tutorial -> feature -> shipped update
+4. Optional typing helps catch bugs early
 
-## Personalized study format (autistic-friendly + intuitive)
+## 14-day speedrun plan (90 minutes/day)
 
-Use the same daily structure every session:
+Daily split:
+- **20 min** learning
+- **60 min** building
+- **10 min** recap + commit notes
 
-- **15 min**: review yesterday's notes/checklist
-- **25 min**: one new Luau/Roblox concept
-- **30 min**: one tiny feature in Studio
-- **10 min**: write "what changed" + "what broke"
-- **5 min**: set tomorrow's first step before stopping
+### Days 1-3: Core scripting velocity
 
-Low-overload rules:
-- Keep one project open for a full week (avoid context switching)
-- Change only one system at a time (UI, inventory, movement, etc.)
-- Keep a "known-good" place file before experiments
-- Use checklists instead of memory for setup, testing, and publishing
-- Timebox rabbit holes (15 minutes), then log and move on
+Focus:
+- Variables, functions, loops, tables
+- Script vs LocalScript
+- StarterGui + simple UI updates
 
-## 8-week Roblox roadmap
+Build:
+- Coin pickup + live score label + reset button.
 
-### Weeks 1-2: Luau + Studio foundations
+### Days 4-6: Client/server integration
 
-Learn:
-- Variables, tables, loops, functions
-- ModuleScripts and reusable functions
-- Basic typing (`: number`, `: string`, etc.)
-- Studio hierarchy: Workspace, ReplicatedStorage, ServerScriptService, StarterPlayer
+Focus:
+- RemoteEvent basics
+- Server authority for important state
+- Input on client, validation on server
 
-Mini-project:
-- Build a simple coin pickup system that updates a score label.
+Build:
+- Shop purchase flow (client request, server validation, server response).
 
-### Weeks 3-4: Client/server mental model
+### Days 7-9: Data + progression
 
-Learn:
-- Difference between LocalScripts and Scripts
-- RemoteEvents and RemoteFunctions
-- Authority model: server validates game-critical actions
-- Basic anti-abuse validation (range checks, cooldowns)
+Focus:
+- DataStore save/load patterns
+- Retry/fallback for save failures
+- Session state via ModuleScripts
 
-Mini-project:
-- Shop system where purchases are requested by client but validated on server.
+Build:
+- Persistent currency + inventory starter system.
 
-### Weeks 5-6: Game systems + data integrity
+### Days 10-12: Defensive pass
 
-Learn:
-- DataStore patterns (save/load safely)
-- Retry and fallback patterns
-- Inventory/state modeling with ModuleScripts
-- Structured logging for bug tracking
+Focus:
+- Validate all client-provided values
+- Add cooldown/range checks
+- Reject impossible actions server-side
 
-Mini-project:
-- Persistent inventory with safe save/load and error handling.
+Build:
+- Harden your economy and movement-related remotes with sanity checks.
 
-### Weeks 7-8: Defensive engineering + polish
+### Days 13-14: Ship loop
 
-Learn:
-- Threat modeling for common Roblox exploit attempts
-- Server-side sanity checks for movement, currency, damage
-- Monitoring suspicious behavior with logs and counters
-- Refactoring for readability and maintainability
+Focus:
+- Bug triage and polish
+- Playtest checklist
+- Release small update
 
-Mini-project:
-- Add a "security hardening pass" to your game and document what changed.
+Build:
+- "v0.1" release with changelog and one post-release patch.
 
-## Roblox tool progression (simple and focused)
+## 30-day integration sprint (if you continue)
 
-Install/use only what you need:
-1. Roblox Studio built-in debugger + output window
-2. Script Analysis and type checker warnings
-3. Version control workflow for place/scripts
-4. Profiling/performance tools after core gameplay works
+Week 1:
+- Stabilize code structure (ModuleScripts, naming, folder layout)
 
-Avoid tool overload early. One new tool per week is enough.
+Week 2:
+- Expand one core loop (quest/combat/tycoon cycle)
 
-## Integration plan (education -> real project)
+Week 3:
+- Add telemetry/logging for failures and abuse patterns
 
-Use this sequence to integrate learning into a real game:
+Week 4:
+- Optimize performance and ship v0.2
 
-1. Build one mechanic in isolation (prototype place)
-2. Write a short test checklist for that mechanic
-3. Move it into your main game only after passing checklist
-4. Add server validation before release
-5. Ship small updates weekly instead of large rewrites
+## Build-first checklist (use every session)
 
-## Personal repo notes to keep
+- One feature target only
+- One success metric (e.g., "purchase completes in <1s")
+- One safety check on server
+- One test run in Studio playtest
+- One short changelog entry
 
-In your own notes repo, keep:
-- `notes/concepts.md` (plain-language explanations)
-- `notes/errors.md` (error -> cause -> fix)
-- `checklists/playtest.md` (repeatable test flow)
-- `security/threat-model.md` (possible abuse paths + mitigations)
-- `changelog/<date>.md` (what changed each session)
+If you do only these five things each day, you will move fast.
 
-This makes progress visible and reduces mental load.
+## Minimal tool stack for speed
 
-## Burnout protocol (when blocked)
+1. Roblox Studio output/debugger
+2. Script Analysis + type warnings
+3. Version control (small, frequent commits)
 
-If blocked for >30 minutes:
+Add more tools only after shipping your first playable loop.
 
-1. Return to your known-good baseline
-2. Reproduce with the smallest possible script
-3. Write one hypothesis
-4. Run one test only
-5. Log the result before trying another hypothesis
-
-## What success looks like after 60 days
+## What "done" looks like by day 14
 
 You should be able to:
-- Build and ship a small Roblox game loop end-to-end
-- Explain client/server boundaries clearly
-- Implement server-side validation for key systems
-- Debug faster using repeatable notes/checklists
-- Improve your game without relying on unsafe shortcuts
+- Build and ship a basic Roblox gameplay loop
+- Use remotes with server validation
+- Save and load player progression safely
+- Explain your core systems clearly
+- Patch bugs quickly without rewrites
 
-## Optional next specialization (pick one for 90 days)
+## Next specialization (pick one for the next 60-90 days)
 
-- **Gameplay Systems**: combat, progression, economy
-- **Technical Design**: architecture, modules, maintainability
+- **Systems Speed**: faster feature shipping and cleaner architecture
+- **Game Economy**: progression, balancing, retention loops
 - **Defensive Engineering**: exploit-resistant server logic and monitoring
 
-Pick one lane and stay with it long enough to feel compounding progress.
+Pick one lane and stack weekly releases.
