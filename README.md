@@ -19,13 +19,19 @@ Will automatically work with future firmwares!
 		python -m pip install -r requirements.txt
 
 
-## Windows note (ChatGPT + Edge/WebView2)
+## Windows troubleshooting (package lookup + Edge runtime)
 
-If your Windows machine shows package/runtime errors while launching the ChatGPT desktop app, verify Microsoft Edge WebView2 Runtime is installed and updated.
+If Windows reports "package not found" while using `winget`, or ChatGPT fails to start due to runtime components, run the included repair script from **elevated PowerShell**:
 
-	winget install --id Microsoft.EdgeWebView2Runtime
+	./windows_chatgpt_fix.ps1
 
-Then restart Windows and try the app again. This is separate from this Python tool, but it is a common Windows dependency issue.
+What it does:
+- verifies `winget`/App Installer exists,
+- resets winget sources (fixes many package index issues),
+- installs/updates Microsoft Edge WebView2 Runtime,
+- installs/updates Microsoft Visual C++ runtime.
+
+This is optional for this Python tool, but useful for users integrating this repo into a Windows environment where ChatGPT and Python tooling are used side-by-side.
 
 ## Usage
 
