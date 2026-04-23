@@ -27,6 +27,14 @@ If you need the Windows ChatGPT/runtime integration path (winget + WebView2 + VC
 
 For the full educational walkthrough and fallback steps, see `CHATGPT_WINDOWS_RUNTIME.md`.
 
+## Windows app optimization (Discord + Equibop + Chrome)
+
+For Discord/Equibop/Chrome performance cleanup and launch tuning, run:
+
+	./windows_apps_optimize.ps1 -OptimizeDiscord -OptimizeEquibop -OptimizeChrome -CreateOptimizedLaunchers
+
+See `DISCORD_EQUIBOP_CHROME_OPTIMIZATION.md` for targeted command variants and tuning notes.
+
 ## Usage
 
 	savethemblobs.py [-h] [--save-dir SAVE_DIR] [--overwrite]
