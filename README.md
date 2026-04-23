@@ -8,9 +8,24 @@ Will automatically work with future firmwares!
 
 ## Dependencies
 
-	Depends on Python 2.7 pip, requests and six. 
+	Depends on Python 3.8+ and pip.
 	With pip installed, run:
-		pip install -r requirements.txt
+		python -m pip install -r requirements.txt
+
+	If you are on Windows and saw a "package not found"/build error, upgrade pip first:
+		python -m pip install --upgrade pip
+
+	Then retry:
+		python -m pip install -r requirements.txt
+
+
+## Windows note (ChatGPT + Edge/WebView2)
+
+If your Windows machine shows package/runtime errors while launching the ChatGPT desktop app, verify Microsoft Edge WebView2 Runtime is installed and updated.
+
+	winget install --id Microsoft.EdgeWebView2Runtime
+
+Then restart Windows and try the app again. This is separate from this Python tool, but it is a common Windows dependency issue.
 
 ## Usage
 
