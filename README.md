@@ -8,9 +8,30 @@ Will automatically work with future firmwares!
 
 ## Dependencies
 
-	Depends on Python 2.7 pip, requests and six. 
+	Depends on Python 3.8+ and pip.
 	With pip installed, run:
-		pip install -r requirements.txt
+		python -m pip install -r requirements.txt
+
+	If you are on Windows and saw a "package not found"/build error, upgrade pip first:
+		python -m pip install --upgrade pip
+
+	Then retry:
+		python -m pip install -r requirements.txt
+
+
+## Windows troubleshooting (package lookup + Edge runtime)
+
+If Windows reports "package not found" while using `winget`, or ChatGPT fails to start due to runtime components, run the included repair script from **elevated PowerShell**:
+
+	./windows_chatgpt_fix.ps1
+
+What it does:
+- verifies `winget`/App Installer exists,
+- resets winget sources (fixes many package index issues),
+- installs/updates Microsoft Edge WebView2 Runtime,
+- installs/updates Microsoft Visual C++ runtime.
+
+This is optional for this Python tool, but useful for users integrating this repo into a Windows environment where ChatGPT and Python tooling are used side-by-side.
 
 ## Usage
 
